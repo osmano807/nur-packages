@@ -20,7 +20,7 @@
   prettier-plugin-jinja-template =
     pkgs.callPackage ./pkgs/prettier-plugin-jinja-template {};
 
-  diesel-cli = pkgs.callPackage ./pkgs/diesel-cli {};
+  diesel-cli = pkgs.callPackage ./pkgs/diesel-cli/package.nix {};
 
   leptosfmt = pkgs.callPackage ./pkgs/leptosfmt {};
 }
