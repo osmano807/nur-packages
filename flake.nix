@@ -12,8 +12,6 @@
       inputs.devshell.url = "github:numtide/devshell";
     };
 
-    
-
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
@@ -43,5 +41,7 @@
       ];
 
       devShells = std.harvest inputs.self ["repo" "devshells"];
+
+      lib = std.harvest inputs.self ["nix" "library"];
     };
 }
