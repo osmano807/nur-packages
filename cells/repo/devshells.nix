@@ -27,7 +27,7 @@ in
       # `std` TUI in our environment.
       imports = [std.std.devshellProfiles.default];
 
-      packages = [ nixpkgs.yq-go ];
+      packages = [nixpkgs.yq-go];
 
       commands = [
         {
