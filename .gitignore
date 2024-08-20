@@ -1,3 +1,10 @@
-result
-result-*
+# Nix
+/result
+/result-*
 
+# Generated directories
+/.cache/
+/.data/
+/.config/
+/.bin/
+/.run/
