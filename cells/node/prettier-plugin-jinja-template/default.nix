@@ -1,8 +1,6 @@
 {
   lib,
-  stdenv,
   buildNpmPackage,
-  fetchNpmDeps,
   fetchFromGitHub,
 }:
 buildNpmPackage rec {
