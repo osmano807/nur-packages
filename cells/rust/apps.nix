@@ -8,4 +8,5 @@ in {
 
   cargo-leptos = nixpkgs.callPackage ./cargo-leptos {};
 
+  wasm-bindgen-cli = nixpkgs.callPackage ./wasm-bindgen-cli {};
 }
