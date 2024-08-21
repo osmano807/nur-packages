@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,22 +30,29 @@ jobs:
       - uses: divnix/std-action/discover@main
         id: discovery
 
-  packages: &job
+  apps: &job
     needs: discover
     name: ${{ matrix.target.jobName }}
     runs-on: ubuntu-latest
-    if: fromJSON(needs.discover.outputs.hits).packages.build != ''
+    if: fromJSON(needs.discover.outputs.hits).apps.build != ''
     strategy:
       matrix:
-        target: ${{ fromJSON(needs.discover.outputs.hits).packages.build }}
+        target: ${{ fromJSON(needs.discover.outputs.hits).apps.build }}
     steps:
       - uses: *quick
       - uses: *magic
       - uses: divnix/std-action/run@main
 
-  shells:
+  packages:
     <<: *job
-    if: fromJSON(needs.discover.outputs.hits).shells.build != ''
+    if: fromJSON(needs.discover.outputs.hits).packages.build != ''
     strategy:
       matrix:
-        target: ${{ fromJSON(needs.discover.outputs.hits).shells.build }}
+        target: ${{ fromJSON(needs.discover.outputs.hits).packages.build }}
+
+  devshells:
+    <<: *job
+    if: fromJSON(needs.discover.outputs.hits).devshells.build != ''
+    strategy:
+      matrix:
+        target: ${{ fromJSON(needs.discover.outputs.hits).devshells.build }}

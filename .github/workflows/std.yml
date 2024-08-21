@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -22,19 +23,31 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - uses: divnix/std-action/discover@main
         id: discovery
+  apps:
+    needs: discover
+    name: ${{ matrix.target.jobName }}
+    runs-on: ubuntu-latest
+    if: fromJSON(needs.discover.outputs.hits).apps.build != ''
+    strategy:
+      matrix:
+        target: ${{ fromJSON(needs.discover.outputs.hits).apps.build }}
+    steps:
+      - uses: nixbuild/nix-quick-install-action@v28
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
+      - uses: divnix/std-action/run@main
   packages:
     needs: discover
     name: ${{ matrix.target.jobName }}
     runs-on: ubuntu-latest
-    if: fromJSON(needs.discover.outputs.hits).packages.build != ''
-    strategy:
-      matrix:
-        target: ${{ fromJSON(needs.discover.outputs.hits).packages.build }}
     steps:
       - uses: nixbuild/nix-quick-install-action@v28
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - uses: divnix/std-action/run@main
-  shells:
+    if: fromJSON(needs.discover.outputs.hits).packages.build != ''
+    strategy:
+      matrix:
+        target: ${{ fromJSON(needs.discover.outputs.hits).packages.build }}
+  devshells:
     needs: discover
     name: ${{ matrix.target.jobName }}
     runs-on: ubuntu-latest
@@ -42,7 +55,7 @@ jobs:
       - uses: nixbuild/nix-quick-install-action@v28
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - uses: divnix/std-action/run@main
-    if: fromJSON(needs.discover.outputs.hits).shells.build != ''
+    if: fromJSON(needs.discover.outputs.hits).devshells.build != ''
     strategy:
       matrix:
-        target: ${{ fromJSON(needs.discover.outputs.hits).shells.build }}
+        target: ${{ fromJSON(needs.discover.outputs.hits).devshells.build }}
