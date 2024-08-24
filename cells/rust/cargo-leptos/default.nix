@@ -1,7 +1,7 @@
 # From nixpkgs/pkgs/development/tools/rust/cargo-leptos/default.nix
 {
   darwin,
-  fetchFromGitHub,
+  fetchCrate,
   lib,
   rustPlatform,
   stdenv,
@@ -17,16 +17,14 @@
 in
   rustPlatform.buildRustPackage rec {
     pname = "cargo-leptos";
-    version = "0.2.19";
+    version = "0.2.20";
 
-    src = fetchFromGitHub {
-      owner = "leptos-rs";
-      repo = pname;
-      rev = "v${version}";
-      hash = "sha256-hQ1mGhLPYK4P2qbag/CSpHje7p+MLKwrij1Fti035WU=";
+    src = fetchCrate {
+      inherit pname version;
+      hash = "sha256-owaDnDmAiZcQA6SI1u7eqW86rx7WeQRFgM0/8vibrI4=";
     };
 
-    cargoHash = "sha256-c3BwoCdxwETwDv8sZoSihxzO3J9IbLNAgtkYgHosUI0=";
+    cargoHash = "sha256-Qgwx92hnLTcvK9+wapZOi4Ky3k6hDqbBRZGYMwcLgjU=";
 
     buildInputs = optionals isDarwin [
       SystemConfiguration
