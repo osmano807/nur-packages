@@ -1,8 +1,7 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
-  #fetchCrate,
+  fetchCrate,
   rustPlatform,
   installShellFiles,
   darwin,
@@ -27,31 +26,15 @@ assert lib.assertMsg (lib.elem true [
 ]) "support for at least one database must be enabled";
   rustPlatform.buildRustPackage rec {
     pname = "diesel-cli";
-    version = "unstable-2024-07-30";
+    version = "2.2.3";
 
-    /*
-       src = fetchCrate {
+    src = fetchCrate {
       inherit version;
       crateName = "diesel_cli";
-      hash = "sha256-B+AHTJgOBUGVc4J2VcwuqVwAbm0wpsFHc9+gc5g2RAM=";
+      hash = "sha256-pv75bvswi+JfeL7B8GPaQgXyNdNvzNgXs9VYgzKRn2U=";
     };
 
-    cargoHash = "sha256-HFhkePq2fZ7MxZfH0jLlS5B10jqf15+RUcGZnDbML5Q=";
-    */
-
-    src = fetchFromGitHub {
-      owner = "diesel-rs";
-      repo = "diesel";
-      rev = "56b0247f6916eed1e639d5462b34b747d592dca5";
-      sha256 = "sha256-1E061BQBwAezEbLIHbNJJySDdeeXx9i9M1+nyHpu/xA=";
-    };
-
-    buildAndTestSubdir = "diesel_cli";
-
-    cargoLock = {lockFile = ./Cargo.lock;};
-    postPatch = ''
-      ln -s ${./Cargo.lock} Cargo.lock
-    '';
+    cargoHash = "sha256-BMMh4BEoB1UhavoiQWfFhsSZsvfFSfEJhEewjA1ukLQ=";
 
     nativeBuildInputs = [
       installShellFiles
