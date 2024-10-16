@@ -5,15 +5,15 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "leptosfmt";
-  version = "0.1.30";
+  version = "0.1.32";
 
   src = fetchCrate {
     inherit version;
     crateName = pname;
-    hash = "sha256-BSWU4KjEfbs8iDkCq+n2D34WS9kqKCVePKnghgQQb/0=";
+    hash = "sha256-9T510sSR/+qrTk2iOgBWWL3BPnT3bRls8Cjkxk6fYOk=";
   };
 
-  cargoHash = "sha256-ZhzcrjVLdR7V6ylmZrQJAFFOL6hSuiORA3iNQdSXEzA=";
+  cargoHash = "sha256-MetYHwnjkPFr/Xj7EuPEsjjD4kBH2fEnFXIni1olqhU=";
 
   meta = {
     description = "A formatter for the leptos view! macro";
