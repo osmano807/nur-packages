@@ -19,7 +19,7 @@ jobs:
       hits: ${{ steps.discovery.outputs.hits }}
     runs-on: ubuntu-latest
     steps:
-      - uses: nixbuild/nix-quick-install-action@v28
+      - uses: nixbuild/nix-quick-install-action@v29
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - uses: divnix/std-action/discover@main
         id: discovery
@@ -32,7 +32,7 @@ jobs:
       matrix:
         target: ${{ fromJSON(needs.discover.outputs.hits).apps.build }}
     steps:
-      - uses: nixbuild/nix-quick-install-action@v28
+      - uses: nixbuild/nix-quick-install-action@v29
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - uses: divnix/std-action/run@main
   packages:
@@ -40,7 +40,7 @@ jobs:
     name: ${{ matrix.target.jobName }}
     runs-on: ubuntu-latest
     steps:
-      - uses: nixbuild/nix-quick-install-action@v28
+      - uses: nixbuild/nix-quick-install-action@v29
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - uses: divnix/std-action/run@main
     if: fromJSON(needs.discover.outputs.hits).packages.build != ''
@@ -52,7 +52,7 @@ jobs:
     name: ${{ matrix.target.jobName }}
     runs-on: ubuntu-latest
     steps:
-      - uses: nixbuild/nix-quick-install-action@v28
+      - uses: nixbuild/nix-quick-install-action@v29
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - uses: divnix/std-action/run@main
     if: fromJSON(needs.discover.outputs.hits).devshells.build != ''
