@@ -10,9 +10,9 @@
   stdenv,
   curl,
   darwin,
-  version ? "0.2.97",
-  hash ? "sha256-DDUdJtjCrGxZV84QcytdxrmS5qvXD8Gcdq4OApj5ktI=",
-  cargoHash ? "sha256-Zfc2aqG7Qi44dY2Jz1MCdpcL3lk8C/3dt7QiE0QlNhc=",
+  version ? "0.2.99",
+  hash ? "sha256-1AN2E9t/lZhbXdVznhTcniy+7ZzlaEp/gwLEAucs6EA=",
+  cargoHash ? "sha256-DbwAh8RJtW38LJp+J9Ht8fAROK9OabaJ85D9C/Vkve4=",
 }: let
   inherit
     (darwin.apple_sdk.frameworks)
