@@ -4,9 +4,9 @@
 set -euo pipefail
 pushd "$(dirname "${BASH_SOURCE[0]}")"
 
-version=$(npm view daisyui version)
-tarball="daisyui-$version.tgz"
-url="https://registry.npmjs.org/daisyui/-/daisyui-${version}.tgz"
+version=$(npm view tailwindcss version)
+tarball="tailwindcss-$version.tgz"
+url="https://registry.npmjs.org/tailwindcss/-/$tarball"
 
 if [[ "$UPDATE_NIX_OLD_VERSION" == "$version" ]]; then
     echo "Already up to date!"

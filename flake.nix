@@ -38,6 +38,7 @@
         ["rust" "packages"]
         ["rust" "apps"]
         ["node" "packages"]
+        ["node" "apps"]
       ];
 
       devShells = std.harvest inputs.self ["repo" "devshells"];

@@ -4,6 +4,8 @@
 }: let
   inherit (inputs) nixpkgs;
 in {
+  tailwindcss = nixpkgs.callPackage ./tailwindcss/package.nix {};
+
   daisyui = nixpkgs.callPackage ./daisyui/package.nix {};
 
   prettier-plugin-tailwindcss =

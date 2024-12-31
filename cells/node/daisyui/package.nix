@@ -1,24 +1,31 @@
 {
   lib,
   buildNpmPackage,
-  fetchFromGitHub,
+  fetchurl,
 }:
 buildNpmPackage rec {
   pname = "daisyui";
-  version = "4.12.10";
+  version = "5.0.0-beta.1";
 
-  src = fetchFromGitHub {
-    owner = "saadeghi";
-    repo = pname;
-    rev = "v${version}";
-    hash = "sha256-1KUwETAVYKdD2LMLnn+w8JayvkDTVRzmY5TBOW/5D7k=";
+  src = fetchurl {
+    url = "https://registry.npmjs.org/${pname}/-/${pname}-${version}.tgz";
+    hash = "sha256-vfCShcsQZ+ld4PWJiZLrQNmcqR+4flA2G10C0aSLPdQ=";
   };
 
-  npmDepsHash = "sha256-PS8fhBmDfJBxaUb2YXQhRrqMXsfRP9ugbglZpow6LDU=";
+  npmDepsHash = "sha256-iXvxup6uSg7ourv7FNMbOc7R48h3oEWbgUOU3o7lUVI=";
 
   # use generated package-lock.json as upstream does not provide one
   postPatch = ''
-    cp ${./package-lock.json} ./package-lock.json
+    ln -s ${./package-lock.json} ./package-lock.json
+  '';
+
+  dontNpmBuild = true;
+
+  forceEmptyCache = true;
+
+  installPhase = ''
+    mkdir -p $out/lib/node_modules/daisyui
+    cp -r . $out/lib/node_modules/daisyui
   '';
 
   passthru.updateScript = ./update.sh;
