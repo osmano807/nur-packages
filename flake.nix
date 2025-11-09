@@ -2,9 +2,8 @@
   description = "My personal NUR repository";
 
   inputs = {
-    nixpkgs.url = "nixpkgs";
-    #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-unstable.url = "latest";
+    nixpkgs.url = "github:nixos/nixpkgs/6faeb062ee4cf4f105989d490831713cc5a43ee1?narHash=sha256-Zg/SCgCaAioc0/SVZQJxuECGPJy%2BOAeBcGeA5okdYDc%3D";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/b6a8526db03f735b89dd5ff348f53f752e7ddc8e?narHash=sha256-rXXuz51Bq7DHBlfIjN7jO8Bu3du5TV%2B3DSADBX7/9YQ%3D";
 
     std = {
       url = "github:divnix/std";

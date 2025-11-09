@@ -24,7 +24,7 @@ in
       hash = "sha256-J98JWL1XcuPLJkDJHbk0ZxOcObZ3deFIpTzHoX+rWgA=";
     };
 
-    cargoHash = "sha256-D9/ZXmXWrKhLLx2aJZgctidpxef53Z7H+X37m8Yz0Hs=";
+    cargoHash = "sha256-fyOlMagXrpfMsaLffeXolTgMldN9u6RQ08Zak9MdC4U=";
 
     buildInputs = optionals isDarwin [
       SystemConfiguration

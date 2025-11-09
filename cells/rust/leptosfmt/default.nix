@@ -15,7 +15,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-kqWLevqOErQcF0WeJKUMIlEo1EMcR0aWqa1+agA5B5Q=";
   };
 
-  cargoHash = "sha256-5x5MR6wMZvwc/OLS2/pEFFJicOSI8n5VX+7WvgNoGD4=";
+  cargoHash = "sha256-RXflkXkB9b/VajWT2L5SNQ723nyc4+P1VKdRytN3ZA8=";
 
   meta = {
     description = "A formatter for the leptos view! macro";

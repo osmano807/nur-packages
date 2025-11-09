@@ -34,7 +34,7 @@ assert lib.assertMsg (lib.elem true [
       hash = "sha256-kTwAG1B4gy+1jj5ar5RkmIUMAO9wYsG7QnMcZii/OZk=";
     };
 
-    cargoHash = "sha256-qcyNFuKJldHVJDAye4K1rHPf/SvpZ+BmqBast1vh/3Q=";
+    cargoHash = "sha256-cVXc03mzjceoiCz1neHeKFoAi/ieaLz+5i50/yD7fMs=";
 
     nativeBuildInputs = [
       installShellFiles
